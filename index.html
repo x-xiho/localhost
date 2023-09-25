@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <mata name=""viewport" content="width=device-width">
+        <title>지역 추천 서비스</title>
+</head>
+<body>
+    <h1 id="sound"></h1>
+    <input id="name" type="text">
+    <button onclick="getSound()">API 요청</button>
+<script>
+    function getSound() {
+        const name = document.getElementById('name').value
+        fetch(`http://localhost:3000/sound/${name}`)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data.sound)
+            document.getElementByID('sound').innerHTML = data.sound
+        });
+    }
+</script>
+</body>
+</html>
